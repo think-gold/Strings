@@ -8,7 +8,8 @@ import java.util.Scanner;
  */
 public class App {
     public static void main(String[] args) {
-        calculator();
+        takeText();
+      //  calculator();
 
         /* Kalkulator: napisz program kalkulator, który wspiera działania dodawania, odejmowania, mnożenia i dzielenia. Użytkownik wpisuje działanie, np 4 + 5 i otrzymuje wynik: 4 + 5 = 9.*/
 
@@ -63,6 +64,25 @@ public class App {
     public static void displayResult(Integer a, Integer b, String operator, Float result) {
         String messageFormatted = String.format("%d %s %d = %f", a, operator, b, result);
         System.out.println(messageFormatted);
+
+
+    }
+    //zad.2
+    public static void takeText() {
+        System.out.println("Give text: ");
+        Scanner Scanner = new Scanner(System.in);
+        String operation = Scanner.nextLine();
+
+        for (Integer i = 0; i < operation.length(); i++) {
+            Character character = operation.charAt(i);
+          //  if(operation.charAt(i).equals(" ") && operation.charAt(i+1)==" ");
+            System.out.println(character);
+        }
+        //return operationArray;
+        //for (String singleText : operationArray) {
+           // String singleText1=singleText.trim();
+           // System.out.println(singleText);
+       // }
     }
 }
 
