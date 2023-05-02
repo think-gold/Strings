@@ -9,9 +9,10 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
 
-//      calculator();
+//        calculator();
 //        stringVacuum();
-        palidrom();
+//        palidrom();
+        heterogram();
     }
 
     //ZAD 1. Kalkulator: napisz program kalkulator, który wspiera działania dodawania, odejmowania, mnożenia i dzielenia.
@@ -99,12 +100,14 @@ public class App {
 //    jak i od tyłu, np Anna), heterogramem (żadna litera się nie powtarza, np Mateusz), pangramem
 //    (zawiera wszystkie litery alfabetu łacińskiego, np The quick brown fox jumps over a lazy dog), oraz, czy dane dwa stringi są
 //    anagramami (składają się z tych samych liter, np Tom Marvolo Riddle - I am Lord Voldemort)
-    public static void palidrom() {
-        String text = getText();
-        boolean isPalidrome = palidromeCheck(text);
-        displayResult(isPalidrome);
-    }
 
+
+    //    public static void palidrom() {                      //Sprawdzenie czy tekst jest palidromem
+//        String text = getText();
+//        boolean isPalidrome = palidromeCheck(text);
+//        displayResultPalidrome(isPalidrome);
+//    }
+//
     public static String getText() {
         System.out.print("Give text: ");
         Scanner scanner = new Scanner(System.in);
@@ -112,24 +115,52 @@ public class App {
         return text;
     }
 
-    public static boolean palidromeCheck(String text) {
-        for (int i = 0; i < text.length(); i++) {
-            char charNormal = text.charAt(i);
-            char charReverse = text.charAt(text.length() - 1 - i);
-            if (charNormal != charReverse) {
-                return false;
+    //
+//    public static boolean palidromeCheck(String text) {
+//        for (int i = 0; i < text.length(); i++) {
+//            char charNormal = text.charAt(i);
+//            char charReverse = text.charAt(text.length() - 1 - i);
+//            if (charNormal != charReverse) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+//
+//    public static void displayResultPalidrome(boolean result) {
+//        if (result == true) {
+//            System.out.println("Podany String jest palidromem");
+//        } else {
+//            System.out.println("Podany String nie jest palidromem");
+//        }
+//    }
+    public static void heterogram() {
+        String userText = getText();
+        boolean result = heterogramCheck(userText);
+        displayResultHeterogram(result);
+    }
+
+    public static boolean heterogramCheck(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            char letter = s.charAt(i);
+            for (int j = 0; j < s.length(); j++) {
+                char nextLetter = s.charAt(j);
+                if (i != j && letter == nextLetter) {
+                    return false;
+                }
             }
         }
         return true;
     }
 
-    public static void displayResult(boolean result) {
+    public static void displayResultHeterogram(boolean result) {
         if (result == true) {
-            System.out.println("Podany String jest palidromem");
+            System.out.println("Podany wyraz jest heterogramem");
         } else {
-            System.out.println("Podany String nie jest palidromem");
+            System.out.println("Podany wyraz NIE JEST heterogramem");
         }
     }
+
 }
 
 
