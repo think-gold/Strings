@@ -10,7 +10,8 @@ public class App {
     public static void main(String[] args) {
 
 //      calculator();
-        stringVacuum();
+//        stringVacuum();
+        palidrom();
     }
 
     //ZAD 1. Kalkulator: napisz program kalkulator, który wspiera działania dodawania, odejmowania, mnożenia i dzielenia.
@@ -74,25 +75,62 @@ public class App {
 
 // ZAD 2. Odkurzacz do spacji: napisz program, który oczyszcza dany tekst ze wszystkich nadmiarowych spacji,
 //        pozostawiając tylko pojedyncze między słowami. Np Ala   ma           kota                 -> Ala ma kota
-    public static void stringVacuum() {
-        String userText = takeText();
+//    public static void stringVacuum() {
+//        String userText = takeText();
+//
+//        while (userText.contains("  ")) {
+//            userText = userText.replace("  ", " ");
+//        }
+//        displayText(userText);
+//    }
+//
+//    public static String takeText() {
+//        System.out.println("Give text: ");
+//        Scanner Scanner = new Scanner(System.in);
+//        String userText = Scanner.nextLine();
+//        return userText;
+//    }
+//
+//    public static void displayText(String text) {
+//        System.out.println(text);
+//    }
 
-        while (userText.contains("  ")) {
-            userText = userText.replace("  ", " ");
+    //    ZAD 3. Analiza stringów: napisz program, który sprawdza, czy dany string jest palindromem (odczytuje się go tak samo od przodu,
+//    jak i od tyłu, np Anna), heterogramem (żadna litera się nie powtarza, np Mateusz), pangramem
+//    (zawiera wszystkie litery alfabetu łacińskiego, np The quick brown fox jumps over a lazy dog), oraz, czy dane dwa stringi są
+//    anagramami (składają się z tych samych liter, np Tom Marvolo Riddle - I am Lord Voldemort)
+    public static void palidrom() {
+        String text = getText();
+        boolean isPalidrome = palidromeCheck(text);
+        displayResult(isPalidrome);
+    }
+
+    public static String getText() {
+        System.out.print("Give text: ");
+        Scanner scanner = new Scanner(System.in);
+        String text = scanner.nextLine();
+        return text;
+    }
+
+    public static boolean palidromeCheck(String text) {
+        for (int i = 0; i < text.length(); i++) {
+            char charNormal = text.charAt(i);
+            char charReverse = text.charAt(text.length() - 1 - i);
+            if (charNormal != charReverse) {
+                return false;
+            }
         }
-        displayText(userText);
+        return true;
     }
 
-    public static String takeText() {
-        System.out.println("Give text: ");
-        Scanner Scanner = new Scanner(System.in);
-        String userText = Scanner.nextLine();
-        return userText;
-    }
-
-    public static void displayText(String text) {
-        System.out.println(text);
+    public static void displayResult(boolean result) {
+        if (result == true) {
+            System.out.println("Podany String jest palidromem");
+        } else {
+            System.out.println("Podany String nie jest palidromem");
+        }
     }
 }
+
 
 
