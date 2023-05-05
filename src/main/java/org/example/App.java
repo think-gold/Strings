@@ -1,5 +1,8 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 
@@ -8,6 +11,17 @@ import java.util.Scanner;
  */
 public class App {
     public static void main(String[] args) {
+<<<<<<< Updated upstream
+=======
+        boolean answer=palindrom();
+        getAnswer(answer);
+
+        // vacuum();
+
+        //  calculator();
+
+        /* Kalkulator: napisz program kalkulator, który wspiera działania dodawania, odejmowania, mnożenia i dzielenia. Użytkownik wpisuje działanie, np 4 + 5 i otrzymuje wynik: 4 + 5 = 9.*/
+>>>>>>> Stashed changes
 
 //        calculator();
 //        stringVacuum();
@@ -15,6 +29,7 @@ public class App {
         heterogram();
     }
 
+<<<<<<< Updated upstream
     //ZAD 1. Kalkulator: napisz program kalkulator, który wspiera działania dodawania, odejmowania, mnożenia i dzielenia.
 //        Użytkownik wpisuje działanie, np 4 + 5 i otrzymuje wynik: 4 + 5 = 9.
 //    public static void calculator() {
@@ -149,18 +164,133 @@ public class App {
                     return false;
                 }
             }
+=======
+    public static void calculator() {
+        String[] operation = takeOperation();
+        Integer numberA = getNumber(operation, 0);
+        Integer numberB = getNumber(operation, 2);
+        String operator = operator(operation);
+        while (operator.equals("/") && numberB == 0) {
+            divisionError();  // dodać metodę pobierającą nową wartość dla B
+>>>>>>> Stashed changes
         }
         return true;
     }
 
+<<<<<<< Updated upstream
     public static void displayResultHeterogram(boolean result) {
         if (result == true) {
             System.out.println("Podany wyraz jest heterogramem");
+=======
+    public static String[] takeOperation() {
+        System.out.println("Give operation and numbers, ex. 4 + 5: ");
+        Scanner Scanner = new Scanner(System.in);
+        String operation = Scanner.nextLine();
+        String[] operationArray = operation.split(" ");
+        return operationArray;
+    }
+
+    public static Integer getNumber(String[] operation, Integer i) {
+        String characterA = operation[i];
+        Integer number = Integer.parseInt(characterA);
+        return number;
+    }
+
+    public static String operator(String[] operation) {
+
+        String operator = operation[1];
+        return operator;
+    }
+
+    public static void divisionError() {   // w jaki sposob mozemy wplywac na parametry przeslane do metody?
+        System.out.println("Nie można dzielić przez 0!!!");
+        System.out.println("Wprowadź liczbę różną od zera");
+    }
+
+    public static float calculation(String operator, Integer a, Integer b) {
+        if (operator.equals("+")) {
+            return a + b;
+        } else if (operator.equals("-")) {
+            return a - b;
+        } else if (operator.equals("*")) {
+            return a * b;
+>>>>>>> Stashed changes
         } else {
             System.out.println("Podany wyraz NIE JEST heterogramem");
         }
     }
+<<<<<<< Updated upstream
 
+=======
+
+    public static void displayResult(Integer a, Integer b, String operator, Float result) {
+        String messageFormatted = String.format("%d %s %d = %f", a, operator, b, result);
+        System.out.println(messageFormatted);
+
+
+    }
+
+    //zad.2
+    public static String takeText() {
+        System.out.println("Give text: ");
+        Scanner Scanner = new Scanner(System.in);
+        String text = Scanner.nextLine();
+        return text;
+    }
+
+    public static void vacuum() {
+        String text = takeText();
+        Character[] chars = new Character[text.length()];
+
+        for (Integer i = 0; i < text.length(); i++) {
+
+            if (text.charAt(i) == ' ' && i < text.length() - 1) {
+                if (text.charAt(i + 1) == ' ') {
+                    continue;
+                }
+            }
+            chars[i] = text.charAt(i);
+            System.out.print(chars[i]);
+        }
+    }
+
+    //zad.3
+    public static void stringAnalysis() {
+        String text = takeText();
+        Character[] chars = new Character[text.length()];
+        palindrom();
+     /*   for (Integer i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == ' ' && i < text.length() - 1) {
+                Character character = text.charAt(i);
+                System.out.println(character);
+            }
+        }*/
+    }
+
+    public static boolean palindrom() {
+        String text = takeText();
+        boolean palindrom = true;
+
+            for (Integer j = 0; j < text.length() / 2; j++) {
+                if (text.charAt(j) == text.charAt(text.length() - j - 1)) {
+                } else {
+                    palindrom = false;
+                    break;
+                    //System.out.println("This isn't palindrom.");
+                }
+        }
+        return palindrom;
+    }
+
+    public static void getAnswer(boolean answer){
+        if (answer==true) {
+            System.out.println("This is palindrom.");
+        }
+        else {
+            System.out.println("This isn't palindrom.");
+        }
+    }
+>>>>>>> Stashed changes
 }
 
 
